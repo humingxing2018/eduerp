@@ -22,7 +22,7 @@ import cn.service.user.UserService;
 /**
  * 
  * @author hmx20180125 15:33
- * @updator
+ * @updator 测一下
  */
 @Controller
 @RequestMapping(value="/user")
