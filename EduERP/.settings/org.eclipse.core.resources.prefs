@@ -1,0 +1,10 @@
+#Sat Feb 03 11:38:36 CST 2018
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=branch 'master' of https\://github.com/hmx1688/Test.git
+eclipse.preferences.version=1
+encoding//WebRoot/WEB-INF/jsp/classInfolist.jsp=UTF-8
+encoding//src/cn/pojo/ClassRoom.java=UTF-8
+encoding//src/cn/pojo/FlowDetail.java=UTF-8
+encoding//src/cn/service/classroom/ClassService.java=UTF-8
+encoding//src/cn/service/classroom/ClassServiceImpl.java=UTF-8

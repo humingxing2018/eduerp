@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="EduERP"
+  id="myeclipse.1515651216279"
+  context-root="/EduERP"
+  j2ee-spec="6.0"
+  archive="EduERP.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.dao.homework.HomeWorkDao">
+	<!-- findBy -->
+	<select id="findBy" resultType="homeWork" parameterType="homeWork">
+		SELECT * FROM homework
+    </select>
+      <insert id="insert" parameterType="homeWork">
+		INSERT INTO homework(`chpId`,`claId`,`type`,`completion`,`userId`) 
+		VALUES (#{chpId},#{claId},#{type},#{completion},#{userId})
+	</insert>
+	  <delete id="delete" parameterType="homeWork">
+		delete FROM homework where id=#{id}
+    </delete>
+     <update id="update" parameterType="homeWork">
+		update homework 
+		<set>
+			<if test="chpId!=null and name!=''">
+				chpId=#{chpId},
+			</if>
+			<if test="claId!=null and claId!=''">
+				claId=#{claId},
+			</if>
+			<if test="type!=null and type!=''">
+				type=#{type}, 
+			</if>
+			<if test="completion!=null and completion!=''">
+				completion=#{completion}, 
+			</if>
+			<if test="userId!=null and userId!=''">
+				userId=#{userId}, 
+			</if>
+		</set>
+		where id=#{id}
+    </update>
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.dao.flowdetail.FlowDetailMapper">
+	<!-- findBy -->
+	<!-- <select id="findBy" resultType="FlowDetail" parameterType="FlowDetail">
+		SELECT *  FROM flowdetail WHERE fldId=#{fldId}
+    </select> -->
+    <select id="findAll" resultType="FlowDetail">
+		SELECT *  FROM FlowDetail
+    </select>
+    <!-- <insert id="insert" parameterType="Integer">
+    	insert into flowdetail (fliId,fldName,dictCode,userId)
+    		values (#{fliId},#{fldName},#{dictCode},#{userId})
+    </insert>
+    <update id="update" parameterType="Integer">
+    	 update flowdetail 
+		 <trim prefix="set" suffixOverrides="," suffix="where fldId = #{fldId}">
+	 		<if test="fliId != null">fliId=#{fliId},</if>
+			<if test="fldName != null">fldName=#{fldName},</if>
+			<if test="dictCode != null">dictCode=#{dictCode},</if>
+			<if test="userId != null">userId=#{userId},</if>y
+		 </trim>
+    </update>
+    <delete id="delete" parameterType="Integer">
+    	delete flowdetail where fldId = #{fldId}
+    </delete> -->
+</mapper>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.dao.task.TaskMapper">
+	<!-- 查询findAll -->
+	<select id="findAll" resultType="task">
+		SELECT * FROM task
+	</select>
+	
+	<select id="findBy" resultType="task" parameterType="task">
+		select * from task 
+		<where>
+		<if test="id!=null and id!=0">
+				and id=#{id} 
+			</if>
+			<if test="title!=null and title!=''">
+				title=#{title},
+			</if>
+			<if test="path!=null and path!=''">
+				path=#{path},
+			</if>
+			<if test="sortIdex!=null">
+				sortIdex=#{sortIdex}, 
+			</if>	
+		</where>
+    </select>
+    
+	<!-- insert 创建：clq -->
+    <insert id="insert" parameterType="task">
+		insert into task(title,path,sortIdex) values(#{title},#{path},#{sortIdex})
+    </insert>
+    <!-- delete 创建：clq -->
+    <delete id="delete" parameterType="task">
+		delete from task where id=#{id}
+    </delete>
+    <!-- update 创建：clq -->
+    <update id="update" parameterType="task">
+    	update task 
+		<set>
+			<if test="title!=null and title!=''">
+				title=#{title},
+			</if>
+			<if test="path!=null and path!=''">
+				path=#{path},
+			</if>
+			<if test="sortIdex!=null and sortIdex!=''">
+				sortIdex=#{sortIdex}, 
+			</if>	
+		</set>
+		where id=#{id}
+    </update>
+</mapper>

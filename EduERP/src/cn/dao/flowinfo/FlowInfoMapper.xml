@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.dao.flowinfo.FlowInfoMapper">
+	<!-- findBy -->
+	<select id="findBy" resultType="FlowInfo" parameterType="FlowInfo">
+		SELECT *  FROM flowinfo WHERE fliId=#{fliId}
+    </select>
+    <select id="findAll" resultType="FlowInfo">
+    	SELECT *  FROM flowinfo 
+    </select>
+    <insert id="insert" parameterType="FlowInfo">
+		insert into flowinfo (lname,dictCode) 
+				values (#{lname},#{dictCode})
+	</insert>
+	<update id="update" parameterType="FlowInfo">
+	 update flowinfo 
+		 <trim prefix="set" suffixOverrides="," suffix="where fliId = #{fliId}">
+	 		<if test="lname != null">lname=#{lname},</if>
+			<if test="dictCode != null">dictCode=#{dictCode},</if>y
+		 </trim>
+	</update>
+	<delete id="delete" parameterType="Integer">
+		delete flowinfo where fliId = #{fliId}
+	</delete>
+</mapper>

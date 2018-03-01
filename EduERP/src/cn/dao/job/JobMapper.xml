@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.dao.job.JobMapper">
+	<select id="findBy" resultType="Job" parameterType="Job">
+		select * from Job where 1 = 1
+			<if test="id !=null">
+				and id=#{id}
+			</if>
+			<if test="jid != null and jid !=''">
+				and jid = #{jid}
+			</if>
+			<if test="jname != null and jname !=''">
+				and jname = #{jname}
+			</if>
+			<if test="chaNumber != null and chaNumber !=''">
+				and chaNumber = #{chaNubmer}
+			</if>
+	</select>
+	<insert id="insert" parameterType="Job">
+		insert into
+		Job(jid,jname,chaNumber)
+		values(#{jid},#{jname},#{chaNumber})
+	</insert>
+	<delete id="delete" parameterType="Job">
+		delete from Job where
+		id=#{id}
+	</delete>
+	<update id="update" parameterType="Job">
+		update chapter
+		<set>
+			<if test="jid != null and jid != ''">
+				jid=#{jid},
+			</if>
+			<if test="jname != null and jname != ''">
+				jname=#{jname},
+			</if>
+			<if test="chaNumber !=null and chaNumber != ''">
+				chaNumber=#{chaNumber}
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+</mapper>

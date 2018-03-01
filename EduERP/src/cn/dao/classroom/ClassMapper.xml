@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.dao.classroom.ClassMapper">
+
+<!-- 条件查询 -->
+<select id="findPage" resultType="classRoom">
+		select * from classroom 
+		<where>
+              <if test="id!=null and id!=0">
+                and id=#{id}
+              </if> 
+              <if test="className!=null and className!=''">
+                and className=#{className}
+              </if> 
+              <if test="seats!=null and seats!=''">
+                and seats=#{seats}
+              </if> 
+              <if test="typeId!=null and typeId!=''">
+                and typeId=#{typeId}
+              </if> 
+         </where>
+         limit #{startRow},#{pageSize}
+	</select>
+<!-- 查询教室表 -->
+<select id="findAll" parameterType="classRoom" resultType="classRoom">
+		select * from classroom 
+	</select>
+<!-- 条件查询教室表 -->
+<select id="findBy" parameterType="classRoom" resultType="classRoom">
+		select * from classroom 
+		<where>
+              <if test="id!=null and id!=0">
+                and id=#{id}
+              </if> 
+              <if test="className!=null and className!=''">
+                and className=#{className}
+              </if> 
+              <if test="seats!=null and seats!=''">
+                and seats=#{seats}
+              </if> 
+              <if test="typeId!=null and typeId!=''">
+                and typeId=#{typeId}
+              </if> 
+         </where>
+	</select>
+<!-- 插入教室信息 -->
+<insert id="insert" parameterType="classRoom">
+		insert into classroom(id,className,seats,typeId) 
+				values (#{id},#{className},#{seats},#{typeId})
+	</insert>
+<!-- 修改教室信息 -->
+<update id="update" parameterType="classRoom">
+		update classroom 
+	<set>
+        <if test="className!=null and className!=''">
+            className=#{className},
+        </if>
+        <if test="seats!=null and seats!=''">
+            seats=#{seats},
+        </if>
+        <if test="typeId!=null and typeId!=''">
+        	typeId=#{typeId},
+        </if>
+    </set>
+    where id=#{id}
+	</update>
+<!-- 删除教室信息 -->
+<delete id="delete" parameterType="classRoom">
+		delete from classroom where 1=1
+		<if test="id!=null and id!=0">
+                and id=#{id}
+        </if>
+        <if test="className!=null and className!=''">
+                and className=#{className}
+        </if> 
+        <if test="seats!=null and seats!=''">
+                and seats=#{seats}
+        </if> 
+        <if test="typeId!=null and typeId!=''">
+                and typeId=#{typeId}
+        </if> 
+	</delete>
+</mapper>

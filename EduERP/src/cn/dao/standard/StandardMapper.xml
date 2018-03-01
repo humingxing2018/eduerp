@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.dao.standard.StandardMapper">
+	<!-- 查询标准课程信息 -->
+	<select id="findAll" resultType="Standard">
+		SELECT *  FROM Standard 
+    </select>
+</mapper>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.dao.user.UserMapper">
+	<!-- findBy 创建：hmx20180125 -->
+	<select id="findBy" resultType="user">
+		SELECT *  FROM userinfo <!-- WHERE userName=#{userName} and password=#{passWord} -->
+		<where>
+			<if test="id!=null and id!=0">
+				and id=#{id} 
+			</if>
+			<if test="userName!=null and userName!=''">
+				and userName=#{userName} 
+			</if>
+			<if test="passWord!=null and passWord!=''">
+				and passWord=#{passWord} 
+			</if>
+		</where>
+    </select>
+    <!-- findPage 创建：hmx20180125 -->
+	<select id="findPage" resultType="user">
+		SELECT *  FROM userinfo
+		<where>
+			<if test="id!=null and id!=0">
+				and id=#{id} 
+			</if>
+			<if test="userName!=null and userName!=''">
+				and userName=#{userName} 
+			</if>
+			<if test="passWord!=null and passWord!=''">
+				and passWord=#{passWord} 
+			</if>
+		</where>
+		 limit #{startRow},#{pageSize}
+    </select>
+    <!-- findAll 创建：hmx20180125 -->
+    <select id="findAll" resultType="user">
+		SELECT *  FROM userinfo
+    </select>
+    <!-- insert 创建：hmx20180125 -->
+    <insert id="insert" parameterType="user">
+		insert into userinfo(username,name,password,phone) values(#{userName},#{name},#{passWord},#{phone})
+    </insert>
+    <!-- delete 创建：hmx20180125 -->
+    <delete id="delete" parameterType="user">
+		delete FROM userinfo where id=#{id}
+    </delete>
+    <!-- update 创建：hmx20180125 -->
+    <update id="update" parameterType="user">
+		update userinfo 
+		<set>
+			<if test="name!=null and name!=''">
+				name=#{name},
+			</if>
+			<if test="phone!=null and phone!=''">
+				phone=#{phone},
+			</if>
+			<if test="userName!=null and userName!=''">
+				userName=#{userName}, 
+			</if>
+			<if test="passWord!=null and passWord!=''">
+				passWord=#{passWord}, 
+			</if>
+			<if test="sex!=null and sex!=''">
+				sex=#{sex}, 
+			</if>
+			<if test="state!=null and state!=''">
+				state=#{state}, 
+			</if>
+		</set>
+		where id=#{id}
+    </update>
+</mapper>

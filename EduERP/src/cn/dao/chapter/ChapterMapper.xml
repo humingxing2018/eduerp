@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.dao.chapter.ChapterMapper">
+	<select id="findBy" resultType="Chapter" parameterType="Chapter">
+		select * from Chapter where 1 = 1
+		<if test="id !=null">
+			and id=#{id}
+		</if>
+		<if test="chaId != null">
+			and chaId = #{chaId}
+		</if>
+		<if test="chaName != null">
+			and chaName = #{chaName}
+		</if>
+		<if test="chaNumber != null">
+			and chaNumber = #{chaNubmer}
+		</if>
+	</select>
+	<!-- 添加章节 -->
+	<insert id="insert" parameterType="Chapter">
+		insert into
+		Chapter(chaId,chaName,chaNumber)
+		values(#{chaId},#{chaName},#{chaNumber})
+	</insert>
+	<!-- 删除章节 -->
+	<delete id="delete" parameterType="Chapter">
+		delete from Chapter where
+		id=#{id}
+	</delete>
+	<update id="update" parameterType="Chapter">
+		update chapter
+		<set>
+			<if test="chaId != null and chaName !=''">
+				chaId=#{chaId},
+			</if>
+			<if test="chaName != null and chaName !=''">
+				chaName=#{chaName},
+			</if>
+			<if test="chaNumber !=null and chaNumber !=''">
+				chaNumber=#{chaNumber}
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+</mapper>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.dao.standarddetail.StandardDetailMapper">
+	<!-- -->
+	<select id="findBy" resultType="StandardDetail" parameterType="StandardDetail">
+		select chp.chaName  from StandardDetail sdd
+		left join Chapter chp on sdd.chpId=chp.chaId
+		left join Standard std on sdd.stdId=std.stdId 
+		 where sdd.sddId=#{sdd.sddId}
+    </select>
+</mapper>
+
